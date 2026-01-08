@@ -17,7 +17,7 @@ def load_yearly():
     # harmonise expected names
     if "year" not in df.columns:
         raise ValueError("CSV needs a 'Year' column.")
-    # your second column is 'Incidents'
+    # second column is 'Incidents'
     inc_col = "incidents" if "incidents" in df.columns else None
     if inc_col is None:
         raise ValueError("CSV needs an 'Incidents' column.")
@@ -58,7 +58,7 @@ def expand_to_daily(df_yearly, spike_factor=5):
         base = tot / n
         lam  = np.full(n, base, dtype=float)
 
-        # weekend uplift (optional, small)
+        # weekend uplift 
         dow = pd.Series(days).dt.dayofweek.values  # 0=Mon..6=Sun
         lam[dow >= 5] *= 1.15
 
@@ -101,7 +101,7 @@ def main():
     daily.to_csv(DAILY_OUT, index=False)
     print(f"[OK] daily  -> {DAILY_OUT}")
 
-    # quick sanity check: daily sums ≈ yearly totals
+    #daily sums ≈ yearly totals
     check = daily.groupby("year", as_index=False)["incidents"].sum()
     merged = yearly.merge(check, on="year", suffixes=("_yearly", "_daily_sum"))
     merged["diff"] = merged["incidents_yearly"] - merged["incidents_daily_sum"]
