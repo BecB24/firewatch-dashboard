@@ -293,13 +293,10 @@ with tab1:
     fig.autofmt_xdate()
     st.pyplot(fig, clear_figure=True)
 
-    st.markdown(
-        "<div class='small-note'>Tip: Scroll on the chart area to zoom (trackpad/mousewheel).</div>",
-        unsafe_allow_html=True,
-    )
+  
 
     # Snapshot (Nov 1–10)
-    st.subheader("Data snapshot (easy-to-read) — Nov 1–10")
+    st.subheader("Data snapshot  — Nov 1–10")
 
     show_cols = [c for c in ["date", "incidents", "is_weekend", "is_bonfire_window"] if c in sub_plot.columns]
     nov_window = sub_plot[
@@ -328,7 +325,7 @@ with tab2:
     st.subheader("A simple model that flags “high-incident days”")
     st.write(
         "This example model uses **day of year** to predict whether a day is likely to be **higher than usual**. "
-        "It’s intentionally simple, so the public can understand it."
+        
     )
 
     # Build a dataset for the model
