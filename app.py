@@ -473,7 +473,7 @@ with tab3:
                 st.info("Years of service column not detected in the survey file.")
 
         st.markdown("---")
-        st.markdown("## 🥧 Pick a question to visualise")
+        st.markdown("## ❓ Pick a question to visualise")
 
         # Find suitable columns for pie/bar chart
         pie_cols = [c for c in survey.columns if is_good_pie_col(survey[c])]
